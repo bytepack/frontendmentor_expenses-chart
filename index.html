@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses chart</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="prevent-preload-transitions">
+<main>
+    <div class="chart">
+        <div class="chart__top chart__section">
+            <div class="chart__balance chart__subsection">
+                <h3 class="chart__title">My balance</h3>
+                <h3 class="chart__balance-value">$921.48</h3>
+            </div>
+            <div class="chart__circles">
+                <div class="chart__circle chart__circle--stroke"></div>
+                <div class="chart__circle chart__circle--fill"></div>
+            </div>
+        </div>
+
+        <div class="chart__main chart__section">
+            <div class="chart__middle">
+                <h2>Spending - Last 7 days</h2>
+                <ul class="chart__chart">
+                    <li class="chart__item" data-chart-item tabindex="0">
+                        <div class="chart__bar-container" data-chart-container>
+                            <div class="chart__bar" data-bar style="--order:1;">
+                                <p class="chart__spending">$<span data-spending></span></p>
+                            </div>
+                        </div>
+                        <p class="chart__label">mon</p>
+                    </li>
+                    <li class="chart__item" data-chart-item tabindex="0">
+                        <div class="chart__bar-container" data-chart-container>
+                            <div class="chart__bar" data-bar style="--order:2;">
+                                <p class="chart__spending">$<span data-spending></span></p>
+                            </div>
+                        </div>
+                        <p class="chart__label">tue</p>
+                    </li>
+                    <li class="chart__item" data-chart-item tabindex="0">
+                        <div class="chart__bar-container" data-chart-container>
+                            <div class="chart__bar" data-bar style="--order:3;">
+                                <p class="chart__spending">$<span data-spending></span></p>
+                            </div>
+                        </div>
+                        <p class="chart__label">wed</p>
+                    </li>
+                    <li class="chart__item" data-chart-item tabindex="0">
+                        <div class="chart__bar-container" data-chart-container>
+                            <div class="chart__bar" data-bar style="--order:4;">
+                                <p class="chart__spending">$<span data-spending></span></p>
+                            </div>
+                        </div>
+                        <p class="chart__label">thu</p>
+                    </li>
+                    <li class="chart__item" data-chart-item tabindex="0">
+                        <div class="chart__bar-container" data-chart-container>
+                            <div class="chart__bar" data-bar style="--order:5;">
+                                <p class="chart__spending">$<span data-spending></span></p>
+                            </div>
+                        </div>
+                        <p class="chart__label">fri</p>
+                    </li>
+                    <li class="chart__item" data-chart-item tabindex="0">
+                        <div class="chart__bar-container" data-chart-container>
+                            <div class="chart__bar" data-bar style="--order:6;">
+                                <p class="chart__spending">$<span data-spending></span></p>
+                            </div>
+                        </div>
+                        <p class="chart__label">sat</p>
+                    </li>
+                    <li class="chart__item" data-chart-item tabindex="0" >
+                        <div class="chart__bar-container" data-chart-container>
+                            <div class="chart__bar" data-bar style="--order:7;">
+                                <p class="chart__spending">$<span data-spending></span></p>
+                            </div>
+                        </div>
+                        <p class="chart__label">sun</p>
+                    </li>
+                </ul>
+                <hr class="chart__line">
+            </div>
+
+            <div class="chart__bottom">
+                <div class="chart__total chart__subsection">
+                    <h3 class="chart__title chart__title--dark">Total this month</h3>
+                    <h3 class="chart__total-value">$478.33</h3>
+                </div>
+                <div class="chart__saving chart__subsection">
+                    <h3 class="chart__saving-value">+2.4%</h3>
+                    <h3 class="chart__title chart__title--dark">from last month</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", ()=>{
+        document.body.classList.remove("prevent-preload-transitions")
+    })
+</script>
+</body>
+</html>

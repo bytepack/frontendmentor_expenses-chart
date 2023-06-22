@@ -1,0 +1,250 @@
+@font-face {
+    font-family: 'DM Sans';
+    src: url('fonts/DMSans-Regular.woff2') format('woff2'),
+    url('fonts/DMSans-Regular.woff') format('woff'),
+    url('fonts/DMSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: local('DM Sans Bold'), local('DM-Sans-Bold'),
+    url('fonts/DMSans-Bold.woff2') format('woff2'),
+    url('fonts/DMSans-Bold.woff') format('woff'),
+    url('fonts/DMSans-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+    font-size: inherit;
+}
+
+:root {
+    --primary-color-hsl: 10, 79%, 65%;
+    --secondary-color-hsl: 186, 34%, 60%;
+    --primary-color: hsl(var(--primary-color-hsl));
+    --secondary-color: hsl(var(--secondary-color-hsl));
+    --nuetal-dark: hsl(25, 47%, 15%);
+    --nuetal-dark-300: hsl(28, 10%, 53%);
+    --nuetal-light: hsl(33, 100%, 98%);
+
+    --title-value-space: 0.5rem;
+    --space-top-section: 2.5rem;
+
+    --font-szie: 2.2rem;
+    --font-size-sub: 1.6rem;
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: var(--font-szie);
+    background-color: hsl(27, 66%, 92%);
+}
+
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+.chart {
+    width: 95%;
+    max-width: 40rem;
+}
+
+.chart__section {
+    border-radius: 1rem;
+    padding: var(--space-top-section) 2rem;
+}
+
+.chart__subsection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--title-value-space);
+}
+
+.chart__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--nuetal-light);
+    background-color: hsl(10, 79%, 65%);
+}
+
+.chart__title {
+    font-size: var(--font-size-sub);
+    font-weight: 400;
+}
+
+.chart__title--dark {
+    color: var(--nuetal-dark-300);
+}
+
+.chart__circles {
+    position: relative;
+}
+
+.chart__circle {
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--nuetal-dark);
+    border-radius: 50%;
+}
+
+.chart__circle--stroke {
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid var(--nuetal-light);
+    position: absolute;
+    top: 0;
+    left: -50%;
+}
+
+.chart__main {
+    background-color: var(--nuetal-light);
+    margin-top: 2rem
+}
+
+.chart__middle {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-top-section)
+}
+
+
+.chart__chart {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    height: 20rem;
+    margin-top: 4rem;
+}
+
+.chart__item {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    outline: none !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+}
+
+/* Prevent CSS transitions on page load with JS */
+.prevent-preload-transitions .chart__spending {
+    transition: none !important;
+}
+
+.chart__spending {
+    position: absolute;
+    bottom: calc(100% + 1rem);
+    left: 50%;
+    transform: translate(-50%, 10px);
+    z-index: 10;
+    color: var(--nuetal-light);
+    background-color: var(--nuetal-dark);
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 1rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s, transform 0.3s;
+}
+
+
+.chart__item:focus .chart__spending {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.chart__bar-container {
+    flex-grow: 1;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.chart__bar {
+    position: relative;
+    width: 100%;
+    background-color: var(--primary-color);
+    border-radius: 0.5rem;
+    height: 0;
+    transition: height 0.5s calc(var(--order) * 100ms) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/*.cha__bar--animate {*/
+/*    transform: translateY(0);*/
+/*}*/
+
+.chart__bar--today {
+    background-color: var(--secondary-color);
+}
+
+.chart__item:focus .chart__bar {
+    background-color: hsla(var(--primary-color-hsl), 0.7);
+}
+
+.chart__item:focus .chart__bar--today {
+    background-color: hsla(var(--secondary-color-hsl), 0.7);
+}
+
+.chart__label {
+    font-size: 1.2rem;
+    color: var(--nuetal-dark-300);
+}
+
+.chart__line {
+    color: var(--nuetal-dark-300);
+}
+
+.chart__bottom {
+    display: flex;
+    align-items: flex-end;
+    padding-top: var(--space-top-section);
+}
+
+.chart__bottom > * {
+    flex: 1 1 0;
+}
+
+.chart__saving {
+    text-align: right;
+    font-size: var(--font-size-sub);
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+    .chart__item:hover .chart__spending {
+        visibility: visible;
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    .chart__item:hover .chart__bar {
+        background-color: hsla(var(--primary-color-hsl), 0.7);
+    }
+
+    .chart__item:hover .chart__bar--today {
+        background-color: hsla(var(--secondary-color-hsl), 0.7);
+    }
+
+}
